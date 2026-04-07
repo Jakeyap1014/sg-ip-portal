@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Little Company — SG IP Co Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:#7C8F6E;--sage-light:#A8BF97;--sage-pale:#E8EFE3;--sage-deep:#4A5E3A;
+    --olive:#6B7A52;--cream:#F6F3EE;--warm-white:#FDFAF6;--sand:#E8DDD0;
+    --charcoal:#2C2C2A;--mid:#6B6B67;--border:#D9D2C8;--gold:#B8945A;--gold-light:#F0E4CF;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);min-height:100vh;display:flex;flex-direction:column}
+  nav{background:var(--warm-white);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-brand{font-family:'DM Serif Display',serif;font-size:18px;color:var(--charcoal)}
+  .nav-brand span{color:var(--sage)}
+  .hero{background:var(--sage-deep);padding:100px 48px 110px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,0.06)}
+  .hero::after{content:'';position:absolute;bottom:-100px;left:40px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,0.05)}
+  .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage-light);margin-bottom:20px}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,60px);color:#fff;line-height:1.1;margin-bottom:20px}
+  .hero h1 em{color:var(--sage-light);font-style:italic}
+  .hero-sub{font-size:16px;color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto;line-height:1.65}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;margin-top:32px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:8px 18px;border-radius:40px;font-size:12px;color:rgba(255,255,255,0.7);font-weight:500}
+  .hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--sage-light)}
+  .content{max-width:800px;margin:0 auto;padding:60px 48px 80px;flex:1}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:36px 32px;text-decoration:none;color:var(--charcoal);transition:all 0.25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08);border-color:var(--sage)}
+  .card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+  .card-icon.grants{background:var(--sage-pale);color:var(--sage-deep)}
+  .card-icon.org{background:var(--gold-light);color:var(--gold)}
+  .card h2{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:10px;line-height:1.2}
+  .card p{font-size:14px;color:var(--mid);line-height:1.6;flex:1}
+  .card-link{margin-top:20px;font-size:13px;font-weight:600;color:var(--sage-deep);letter-spacing:0.03em;display:flex;align-items:center;gap:6px;transition:gap 0.2s}
+  .card:hover .card-link{gap:10px}
+  footer{background:var(--charcoal);padding:28px 48px;display:flex;align-items:center;justify-content:space-between}
+  footer p{font-size:12px;color:rgba(255,255,255,0.35)}
+  @media(max-width:640px){.cards{grid-template-columns:1fr}.hero{padding:60px 24px 70px}.content{padding:40px 24px 60px}nav{padding:0 24px}footer{padding:20px 24px;flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">The Little Company <span>/ IP</span></div>
+</nav>
+<div class="hero">
+  <div class="hero-eyebrow">Singapore IP Holding Company</div>
+  <h1>The <em>SG IP Co</em><br>Document Portal</h1>
+  <p class="hero-sub">Strategic resources for incorporating and operating the Singapore IP holding company — grants, group structure, compliance, and application links.</p>
+  <div class="hero-badge">April 2026 · Confidential</div>
+</div>
+<div class="content">
+  <div class="cards">
+    <a href="grants.html" class="card">
+      <div class="card-icon grants">💰</div>
+      <h2>SG Grants &amp; Incentives</h2>
+      <p>Curated map of 13+ grant programmes from Enterprise Singapore, IRAS, EDB, and A*STAR — with real application links, eligibility, and recommended sequencing.</p>
+      <div class="card-link">Explore grants →</div>
+    </a>
+    <a href="org-chart.html" class="card">
+      <div class="card-icon org">🏛</div>
+      <h2>Group Structure</h2>
+      <p>Corporate hierarchy across 7 entities and 6 jurisdictions, IP licensing flows, transfer pricing compliance, and BEPS 2.0 considerations.</p>
+      <div class="card-link">View structure →</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <p>© 2026 The Little Company · Internal Use Only</p>
+  <p>Sources: EnterpriseSG, IRAS, EDB, A*STAR, IPOS</p>
+</footer>
+</body>
+</html>
