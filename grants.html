@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Grants — The Little Company IP Co</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:        #7C8F6E;
+    --sage-light:  #A8BF97;
+    --sage-pale:   #E8EFE3;
+    --sage-deep:   #4A5E3A;
+    --olive:       #6B7A52;
+    --cream:       #F6F3EE;
+    --warm-white:  #FDFAF6;
+    --sand:        #E8DDD0;
+    --charcoal:    #2C2C2A;
+    --mid:         #6B6B67;
+    --border:      #D9D2C8;
+    --gold:        #B8945A;
+    --gold-light:  #F0E4CF;
+    --amber:       #D97706;
+    --red-light:   #FEF2F2;
+    --red:         #B45309;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+  .nav-brand span { color: var(--sage); }
+  .nav-links { display: flex; gap: 8px; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 40px;
+    color: var(--mid);
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a:hover { background: var(--sage-pale); color: var(--sage-deep); }
+  .nav-links a.active { background: var(--sage-deep); color: #fff; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 48px 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 48px;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4.5vw, 50px);
+    color: var(--charcoal);
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--sage-deep); font-style: italic; }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.65;
+    max-width: 520px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .hero-stat {
+    text-align: right;
+  }
+  .hero-stat .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 44px;
+    color: var(--sage-deep);
+    line-height: 1;
+  }
+  .hero-stat .lbl {
+    font-size: 11px;
+    color: var(--mid);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+  .hero-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+    align-self: center;
+    margin: 4px 0;
+  }
+
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 52px;
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+  }
+  .filter-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    padding: 5px 16px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mid);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+    color: #fff;
+  }
+  .filter-label {
+    font-size: 11px;
+    color: var(--mid);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 52px 48px 80px;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-label span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  /* ─── FEATURED PAIR (POC/POV) ─── */
+  .poc-pov-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .grant-hero-card {
+    border-radius: 14px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .grant-hero-card.poc {
+    background: var(--sage-deep);
+    color: #fff;
+  }
+  .grant-hero-card.pov {
+    background: var(--charcoal);
+    color: #fff;
+  }
+  .grant-hero-card::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .ghc-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 40px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .poc .ghc-tag { background: rgba(255,255,255,0.15); color: var(--sage-light); }
+  .pov .ghc-tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
+  .ghc-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .poc .ghc-amount { color: #fff; }
+  .pov .ghc-amount { color: #fff; }
+  .ghc-subtitle {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-bottom: 24px;
+  }
+  .ghc-rows { list-style: none; }
+  .ghc-rows li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px;
+  }
+  .ghc-rows li:last-child { border: none; }
+  .ghc-rows li .key { opacity: 0.5; font-weight: 500; }
+  .ghc-rows li .val { opacity: 0.9; }
+  .ghc-equity-note {
+    margin-top: 20px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    font-size: 11.5px;
+    opacity: 0.75;
+    line-height: 1.5;
+  }
+  .ghc-equity-note strong { opacity: 1; }
+
+  /* ─── GRANT CARDS ─── */
+  .grants-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .grant-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .grant-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .grant-card-left { min-width: 0; }
+  .grant-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .grant-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .fit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .fit-high { background: var(--sage-pale); color: var(--sage-deep); }
+  .fit-med  { background: var(--gold-light); color: var(--amber); }
+  .fit-low  { background: #FEF2F2; color: #B45309; }
+  .grant-admin {
+    font-size: 11px;
+    color: var(--mid);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .grant-amount {
+    font-size: 13px;
+    color: var(--sage-deep);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .grant-desc {
+    font-size: 13.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .grant-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    min-width: 100px;
+  }
+  .grant-quantum {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--sage-deep);
+    text-align: right;
+    line-height: 1.1;
+  }
+  .grant-quantum .unit {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--mid);
+    font-weight: 500;
+    display: block;
+    text-align: right;
+    margin-top: 2px;
+  }
+
+  /* ─── EIS DEEP DIVE ─── */
+  .eis-section {
+    background: var(--sage-deep);
+    border-radius: 16px;
+    padding: 48px;
+    margin-bottom: 48px;
+    color: #fff;
+  }
+  .eis-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .eis-section .sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 36px;
+  }
+  .eis-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .eis-metric {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .eis-metric .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--sage-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .eis-metric .lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .eis-conditions {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .eis-conditions li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.55;
+  }
+  .eis-conditions li::before {
+    content: '→';
+    color: var(--sage-light);
+    flex-shrink: 0;
+    font-weight: 600;
+    margin-top: 1px;
+  }
+
+  /* ─── ROADMAP ─── */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .roadmap-phase {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .phase-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 4px;
+  }
+  .phase-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--charcoal);
+  }
+  .phase-body {
+    padding: 20px;
+  }
+  .phase-items { list-style: none; }
+  .phase-items li {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--charcoal);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .phase-items li:last-child { border: none; }
+  .phase-items li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .phase-note {
+    margin-top: 16px;
+    padding: 10px 12px;
+    background: var(--sage-pale);
+    border-radius: 8px;
+    font-size: 11.5px;
+    color: var(--sage-deep);
+    line-height: 1.5;
+  }
+
+  /* ─── ELIGIBILITY ─── */
+  .eligibility-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .elig-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .elig-ok   { background: var(--sage-pale); color: var(--charcoal); }
+  .elig-warn { background: var(--gold-light); color: var(--charcoal); }
+  .elig-row .elig-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ─── NEXT STEPS ─── */
+  .next-steps { display: flex; flex-direction: column; gap: 12px; }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    align-items: start;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: box-shadow 0.2s;
+  }
+  .step:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+  .step-num {
+    width: 42px; height: 42px;
+    background: var(--sage-deep);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 5px;
+  }
+  .step-content p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer a {
+    font-size: 12px;
+    color: var(--sage-light);
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">The Little Company <span>/ IP</span></div>
+  <div class="nav-links">
+    <a href="org-chart.html">Group Structure</a>
+    <a href="grants.html" class="active">SG Grants</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Singapore — R&D &amp; POC/POV Grants</div>
+    <h1>Funding the <em>SG IP Co</em><br>from day one</h1>
+    <p class="hero-sub">A curated map of Enterprise Singapore, IRAS, and A*STAR grants available to a newly incorporated Singapore IP holding company — with recommended sequencing and eligibility guidance.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="num">S$1.2M</div>
+      <div class="lbl">Max non-dilutive R&D grant<br>(POC + POV combined)</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="num">7</div>
+      <div class="lbl">Grant programmes<br>identified</div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter</span>
+  <button class="filter-btn active" onclick="filterGrants('all', this)">All Grants</button>
+  <button class="filter-btn" onclick="filterGrants('rd', this)">R&amp;D / Tax</button>
+  <button class="filter-btn" onclick="filterGrants('poc', this)">POC / POV</button>
+  <button class="filter-btn" onclick="filterGrants('collab', this)">Collaboration</button>
+  <button class="filter-btn" onclick="filterGrants('tax', this)">Tax Incentives</button>
+</div>
+
+<div class="content">
+
+  <!-- POC / POV FEATURED -->
+  <div class="section-label"><span>Startup SG Tech — POC &amp; POV</span></div>
+  <div class="poc-pov-grid" data-cat="poc">
+    <div class="grant-hero-card poc">
+      <div class="ghc-tag">POC — Proof of Concept</div>
+      <div class="ghc-amount">S$400,000</div>
+      <div class="ghc-subtitle">Maximum grant quantum</div>
+      <ul class="ghc-rows">
+        <li><span class="key">Duration</span><span class="val">Up to 18 months</span></li>
+        <li><span class="key">Objective</span><span class="val">Validate technical & scientific feasibility of proprietary tech</span></li>
+        <li><span class="key">Capital req.</span><span class="val">10% paid-up capital (e.g. S$40K for full grant)</span></li>
+        <li><span class="key">Disbursement</span><span class="val">Milestone-based; 20% upfront on first milestone</span></li>
+        <li><span class="key">Admin</span><span class="val">Enterprise Singapore (EnterpriseSG)</span></li>
+      </ul>
+      <div class="ghc-equity-note">
+        <strong>⚠ Equity component:</strong> EnterpriseSG may subscribe shares equal to 50% of grant at a qualifying round, capped at 49% of total shareholding.
+      </div>
+    </div>
+    <div class="grant-hero-card pov">
+      <div class="ghc-tag">POV — Proof of Value</div>
+      <div class="ghc-amount">S$800,000</div>
+      <div class="ghc-subtitle">Maximum grant quantum</div>
+      <ul class="ghc-rows">
+        <li><span class="key">Duration</span><span class="val">Up to 30 months</span></li>
+        <li><span class="key">Objective</span><span class="val">Build working prototype + validate commercial merit with reference clients</span></li>
+        <li><span class="key">Capital req.</span><span class="val">20% paid-up capital (e.g. S$160K for full grant)</span></li>
+        <li><span class="key">Disbursement</span><span class="val">Milestone-based; 20% upfront on first milestone</span></li>
+        <li><span class="key">Admin</span><span class="val">Enterprise Singapore (EnterpriseSG)</span></li>
+      </ul>
+      <div class="ghc-equity-note">
+        <strong>⚠ Equity component:</strong> EnterpriseSG may subscribe shares equal to 50% of grant at a qualifying round, capped at 49% of total shareholding.
+      </div>
+    </div>
+  </div>
+
+  <!-- EIS DEEP DIVE -->
+  <div class="section-label"><span>Enterprise Innovation Scheme — R&amp;D Tax</span></div>
+  <div class="eis-section" data-cat="rd">
+    <h2>Enterprise Innovation Scheme (EIS)</h2>
+    <p class="sub">IRAS · Applicable from YA 2024 to YA 2028 · Claim via annual tax return</p>
+    <div class="eis-metrics">
+      <div class="eis-metric">
+        <div class="num">400%</div>
+        <div class="lbl">Tax deduction on qualifying IP registration costs (first S$400K/YA)</div>
+      </div>
+      <div class="eis-metric">
+        <div class="num">250%</div>
+        <div class="lbl">Enhanced deduction on R&D staff costs & consumables in Singapore</div>
+      </div>
+      <div class="eis-metric">
+        <div class="num">S$20K</div>
+        <div class="lbl">Max annual cash payout (20% conversion on up to S$100K qualifying spend)</div>
+      </div>
+    </div>
+    <ul class="eis-conditions">
+      <li>R&D must be performed in Singapore — qualifying staff costs and consumables only</li>
+      <li>Company must be SG-registered with min. 3 local employees earning ≥ S$1,400/month</li>
+      <li>Additional 300% deduction on first S$400K R&D expenditure under EIS (on top of base 100%)</li>
+      <li>Cash payout option useful for pre-revenue IP Co — 20% conversion rate, capped at S$20K/YA</li>
+      <li>IP registration deduction covers patents, trademarks, and registered designs filed in SG</li>
+      <li>Apply before project commencement — deductions cannot be backdated beyond YA of spend</li>
+    </ul>
+  </div>
+
+  <!-- OTHER GRANTS -->
+  <div class="section-label"><span>Other Key Grants</span></div>
+  <div class="grants-grid">
+
+    <div class="grant-card" data-cat="collab">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">Enterprise Development Grant (EDG)</div>
+          <span class="fit-tag fit-high">● High Fit</span>
+        </div>
+        <div class="grant-admin">Enterprise Singapore · Business Grants Portal</div>
+        <div class="grant-amount">Up to 50% of qualifying costs (70% for sustainability projects to Mar 2026)</div>
+        <p class="grant-desc">Covers third-party consultancy, software, equipment and internal manpower costs. Ideal for IP strategy projects, innovation capability building, and product development. No maximum quantum per project — eligible as soon as SG IP Co is registered.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">50%<span class="unit">cost subsidy</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="collab">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">EDG Co-Innovation Programme (EDG CIP)</div>
+          <span class="fit-tag fit-high">● High Fit</span>
+        </div>
+        <div class="grant-admin">Enterprise Singapore · Eureka Network</div>
+        <div class="grant-amount">Up to 50% of qualifying R&D costs for bilateral cross-border collaboration</div>
+        <p class="grant-desc">Supports strategic R&D partnerships with companies or institutions in partner countries — including UK, Canada, Australia, and Europe. Ideal for leveraging the group's AU, UK and CA Ops Co entities. Active bilateral calls available; check Eureka Network portal for current open calls.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">50%<span class="unit">bilateral R&D subsidy</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="rd">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">IAF-ICP — Industry Alignment Fund (Industry Collaboration Projects)</div>
+          <span class="fit-tag fit-med">◐ Medium Fit</span>
+        </div>
+        <div class="grant-admin">A*STAR · RIE2030 (new call expected 2026)</div>
+        <div class="grant-amount">No minimum; up to S$25M per project · 1:1.5 leverage ratio with industry</div>
+        <p class="grant-desc">Supports strategic R&D collaborations between public research institutions (A*STAR, NUS, NTU) and industry. SG IP Co would participate as the industry partner. The RIE2025 call has closed; RIE2030 details are expected to be published in Q1–Q2 2026 — ideal timing to register interest now.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">S$25M<span class="unit">max (large projects)</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="poc">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">Startup SG Founder</div>
+          <span class="fit-tag fit-low">○ Low Priority</span>
+        </div>
+        <div class="grant-admin">Enterprise Singapore</div>
+        <div class="grant-amount">S$20,000–S$50,000 matched grant + mentorship</div>
+        <p class="grant-desc">Available to first-time founders building innovative businesses. Low quantum but low-friction — useful for seeding early operations and demonstrating support from EnterpriseSG before pursuing larger grants. Requires an approved Accredited Mentor Partner (AMP).</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">S$50K<span class="unit">max matched grant</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="rd">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">Research &amp; Innovation Scheme for Companies (RISC)</div>
+          <span class="fit-tag fit-high">● High Fit</span>
+          <span class="fit-tag" style="background:#EFF6FF;color:#1D4ED8;">🆕 Newly Found</span>
+        </div>
+        <div class="grant-admin">Economic Development Board (EDB)</div>
+        <div class="grant-amount">60% co-funding on local R&D manpower · 30% on foreign manpower &amp; equipment · 3-year qualifying period</div>
+        <p class="grant-desc">Directly funds expansion of R&D and innovation teams in Singapore. Covers basic monthly salaries of qualifying R&D staff (min. S$5,000/month, capped at S$20,000 for support), equipment purchases, and lease costs. Project must develop new or significantly improved products or processes — routine changes and adoption projects are excluded. One RISC grant per company per qualifying period; disbursed via annual audited reimbursement claims.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">60%<span class="unit">local manpower subsidy</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="tax">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">IP Development Incentive (IDI)</div>
+          <span class="fit-tag fit-high">● High Fit</span>
+          <span class="fit-tag" style="background:#EFF6FF;color:#1D4ED8;">🆕 Newly Found</span>
+        </div>
+        <div class="grant-admin">Economic Development Board (EDB) · Apply via EDB directly</div>
+        <div class="grant-amount">Reduced tax rate of 5%, 10%, or 15% on qualifying IP income · Incentive period up to 10 years (rate increases 0.5%/year thereafter)</div>
+        <p class="grant-desc">The flagship tax incentive for IP holding companies in Singapore. IDI grants a concessionary corporate tax rate — down to 5% — on a percentage of qualifying IP income (royalties, licensing fees, gains from IP commercialisation) determined by the OECD-compliant modified nexus approach. The nexus ratio rewards companies that perform R&D directly in Singapore. Elections into IDI are irrevocable and can be made standalone or bundled with EDB's Development &amp; Expansion Incentive. With OECD Pillar Two's 15% global minimum tax now in effect, the 15% tier is most practical for large MNE groups; smaller entities can still access 5–10% tiers.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">5%<span class="unit">min. effective tax on IP income</span></div>
+      </div>
+    </div>
+
+    <div class="grant-card" data-cat="tax">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
+          <div class="grant-name">Refundable Investment Credit (RIC)</div>
+          <span class="fit-tag fit-med">◐ Medium Fit</span>
+          <span class="fit-tag" style="background:#EFF6FF;color:#1D4ED8;">🆕 Newly Found</span>
+        </div>
+        <div class="grant-admin">EDB / Enterprise Singapore · Approval-basis · 10-year qualifying period</div>
+        <div class="grant-amount">Up to 50% support on each qualifying expenditure category · Unused credits refunded in cash within 4 years</div>
+        <p class="grant-desc">Introduced in Budget 2024, the RIC is Singapore's answer to global investment incentive competition post-OECD Pillar Two. Unlike traditional tax deductions, the RIC does not reduce the GloBE effective tax rate — making it structurally attractive for Pillar Two-affected groups. Credits offset corporate income tax payable; any unutilised portion is refunded in cash. Qualifying expenditure categories include R&D, IP, and innovation-related capex. Requires sizeable investment commitment and is awarded on a negotiated, approval basis through EDB or EnterpriseSG.</p>
+      </div>
+      <div class="grant-card-right">
+        <div class="grant-quantum">50%<span class="unit">credit on qualifying capex</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GRANT ROADMAP -->
+  <div class="section-label"><span>Recommended Grant Sequencing</span></div>
+  <div class="roadmap">
+    <div class="roadmap-phase">
+      <div class="phase-header">
+        <div class="phase-num">Phase 1 · Year 1</div>
+        <div class="phase-title">Foundation Grants</div>
+      </div>
+      <div class="phase-body">
+        <ul class="phase-items">
+          <li>EIS — claim 400% IP registration deductions immediately at incorporation</li>
+          <li>EIS Cash Payout — up to S$20K/YA (attractive if pre-profit)</li>
+          <li>EDG — IP strategy & product development consultancy (50% subsidy)</li>
+          <li>IDI — apply to EDB for 5–10% concessionary tax rate on qualifying IP income</li>
+          <li>RISC — EDB co-funding of 60% on local R&D staff salaries from day one</li>
+        </ul>
+        <div class="phase-note">Low barrier. File EIS via IRAS at year-end. Submit EDG on BGP. Engage EDB directly for IDI and RISC applications.</div>
+      </div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-header">
+        <div class="phase-num">Phase 2 · Year 1–2</div>
+        <div class="phase-title">Innovation Grants</div>
+      </div>
+      <div class="phase-body">
+        <ul class="phase-items">
+          <li>Startup SG Tech POC — up to S$400K for technical validation</li>
+          <li>EDG CIP — bilateral R&D collaboration leveraging AU / UK / CA Ops Co</li>
+        </ul>
+        <div class="phase-note">Submit ROI at go.gov.sg/helloesg. EnterpriseSG responds within 2 weeks. ~2–3 month evaluation cycle.</div>
+      </div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-header">
+        <div class="phase-num">Phase 3 · Year 2–4</div>
+        <div class="phase-title">Scale Grants</div>
+      </div>
+      <div class="phase-body">
+        <ul class="phase-items">
+          <li>Startup SG Tech POV — up to S$800K for prototype + commercialisation</li>
+          <li>IAF-ICP — partner with A*STAR/NUS for deep R&D (IP Co as industry partner)</li>
+          <li>RIC — negotiate Refundable Investment Credit with EDB once R&D capex is sizable</li>
+        </ul>
+        <div class="phase-note">Requires proof of POC completion and a reference customer pipeline. RIC is negotiated directly with EDB based on investment commitment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELIGIBILITY -->
+  <div class="section-label"><span>Eligibility Checklist</span></div>
+  <div class="eligibility-grid" style="margin-bottom: 48px;">
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span> Incorporated as private limited company (Pte. Ltd.) in Singapore via ACRA</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span> ≥ 30% local equity held by Singapore Citizens or PRs — required for most ESG grants</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span> At least 3 full-time local employees earning ≥ S$1,400/month (required for EIS cash payout)</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span> Company age &lt; 10 years at time of application (Startup SG Tech requirement)</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span> Paid-up capital ≥ 10% of POC quantum or 20% of POV quantum — target S$160K to unlock full POV</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span> R&D activities conducted primarily in Singapore (for enhanced in-Singapore deduction rates)</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span> Technology must be proprietary, novel, and not yet commercially launched before application</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span> Apply before project commencement — grants cannot be backdated</div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="section-label"><span>Next Steps</span></div>
+  <div class="next-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Incorporate SG IP Co via ACRA</h4>
+        <p>Register as a Pte. Ltd. Ensure ≥ 30% local shareholding, appoint a Singapore-resident director, and set paid-up capital at S$160K to unlock full POV grant quantum.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Register IP assets with IPOS</h4>
+        <p>File patents, trademarks, and designs in Singapore immediately — EIS deductions accrue from the date of expenditure, so early filing maximises the 400% deduction window.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Submit EDG on Business Grants Portal (BGP)</h4>
+        <p>Apply for EDG to subsidise IP strategy consultancy and product development costs (50%). No minimum spend required; quick turnaround for straightforward applications.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Register Interest — Startup SG Tech POC</h4>
+        <p>Submit a Registration of Interest (ROI) at go.gov.sg/helloesg. EnterpriseSG responds within 2 weeks with an indicative assessment. Aim for POC first — faster approval, lower capital requirement.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Apply for IDI with EDB — target 5% concessionary rate on IP income</h4>
+        <p>The IP Development Incentive is the crown jewel for an IP Co. Engage EDB directly to negotiate the IDI award. The nexus ratio rewards R&D performed in Singapore, so ensure qualifying R&D staff are hired locally from the start. Elections are irrevocable — structure IP assets carefully before election.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>Submit RISC application to EDB for R&D manpower co-funding</h4>
+        <p>RISC co-funds 60% of local R&D staff salaries (S$5K–S$20K/month) over a 3-year qualifying period. Ideal for building out a core Singapore-based R&D team. Apply to EDB with a clearly defined R&D project scope; routine product adoption does not qualify.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h4>Watch for RIE2030 IAF-ICP Open Call (Q1–Q2 2026)</h4>
+        <p>The RIE2025 call has closed. A*STAR is expected to publish RIE2030 IAF-ICP details between January–March 2026. Register interest with an A*STAR Business Development Manager now to be first in queue.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 The Little Company · Sources: EnterpriseSG, IRAS, A*STAR · Internal Use Only</p>
+  <a href="org-chart.html">← View Group Structure</a>
+</footer>
+
+<script>
+function filterGrants(cat, btn) {
+  // Update button states
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Filter logic
+  const cards = document.querySelectorAll('[data-cat]');
+  cards.forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+      card.style.opacity = '1';
+    } else {
+      card.style.opacity = '0.2';
+      card.style.pointerEvents = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
