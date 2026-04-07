@@ -8,9 +8,9 @@
 <style>
   :root {
     --sage:#7C8F6E;--sage-light:#A8BF97;--sage-pale:#E8EFE3;--sage-deep:#4A5E3A;
-    --olive:#6B7A52;--cream:#F6F3EE;--warm-white:#FDFAF6;--sand:#E8DDD0;
-    --charcoal:#2C2C2A;--mid:#6B6B67;--border:#D9D2C8;--gold:#B8945A;--gold-light:#F0E4CF;
-    --amber:#D97706;--red-light:#FEF2F2;--red:#B45309;--blue-light:#EFF6FF;--blue:#1D4ED8;
+    --cream:#F6F3EE;--warm-white:#FDFAF6;--charcoal:#2C2C2A;--mid:#6B6B67;
+    --border:#D9D2C8;--gold:#B8945A;--gold-light:#F0E4CF;--amber:#D97706;
+    --blue-light:#EFF6FF;--blue:#1D4ED8;--red-pale:#FFF1F1;--red-mid:#B91C1C;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal)}
@@ -19,7 +19,7 @@
   .nav-brand{font-family:'DM Serif Display',serif;font-size:18px;color:var(--charcoal)}
   .nav-brand span{color:var(--sage)}
   .nav-links{display:flex;gap:8px}
-  .nav-links a{text-decoration:none;font-size:13px;font-weight:500;padding:8px 20px;border-radius:40px;color:var(--mid);transition:all 0.2s;letter-spacing:0.03em}
+  .nav-links a{text-decoration:none;font-size:13px;font-weight:500;padding:8px 20px;border-radius:40px;color:var(--mid);transition:all 0.2s}
   .nav-links a:hover{background:var(--sage-pale);color:var(--sage-deep)}
   .nav-links a.active{background:var(--sage-deep);color:#fff}
 
@@ -32,10 +32,10 @@
   .hero-stat{text-align:right}
   .hero-stat .num{font-family:'DM Serif Display',serif;font-size:44px;color:var(--sage-deep);line-height:1}
   .hero-stat .lbl{font-size:11px;color:var(--mid);font-weight:500;letter-spacing:0.04em;margin-top:4px}
-  .hero-divider{width:1px;height:32px;background:var(--border);align-self:center;margin:4px 0}
+  .hero-divider{width:1px;height:32px;background:var(--border);align-self:center}
 
   .filter-bar{background:var(--warm-white);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;gap:8px;height:52px;position:sticky;top:64px;z-index:90}
-  .filter-btn{border:1px solid var(--border);background:transparent;padding:5px 16px;border-radius:40px;font-size:12px;font-weight:500;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;letter-spacing:0.03em}
+  .filter-btn{border:1px solid var(--border);background:transparent;padding:5px 16px;border-radius:40px;font-size:12px;font-weight:500;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
   .filter-btn:hover,.filter-btn.active{background:var(--sage-deep);border-color:var(--sage-deep);color:#fff}
   .filter-label{font-size:11px;color:var(--mid);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-right:4px}
 
@@ -44,30 +44,11 @@
   .section-label span{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage)}
   .section-label::before{content:'';display:block;width:32px;height:1px;background:var(--sage)}
 
-  /* POC/POV */
-  .poc-pov-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
-  .grant-hero-card{border-radius:14px;padding:36px 32px;position:relative;overflow:hidden}
-  .grant-hero-card.poc{background:var(--sage-deep);color:#fff}
-  .grant-hero-card.pov{background:var(--charcoal);color:#fff}
-  .grant-hero-card::before{content:'';position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;border:1px solid rgba(255,255,255,0.06)}
-  .ghc-tag{display:inline-block;padding:4px 14px;border-radius:40px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px}
-  .poc .ghc-tag{background:rgba(255,255,255,0.15);color:var(--sage-light)}
-  .pov .ghc-tag{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.65)}
-  .ghc-amount{font-family:'DM Serif Display',serif;font-size:40px;line-height:1;margin-bottom:6px;color:#fff}
-  .ghc-subtitle{font-size:12px;opacity:0.6;margin-bottom:24px}
-  .ghc-rows{list-style:none}
-  .ghc-rows li{display:grid;grid-template-columns:90px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px}
-  .ghc-rows li:last-child{border:none}
-  .ghc-rows li .key{opacity:0.5;font-weight:500}
-  .ghc-rows li .val{opacity:0.9}
-  .ghc-equity-note{margin-top:20px;padding:12px 14px;background:rgba(255,255,255,0.07);border-radius:8px;font-size:11.5px;opacity:0.75;line-height:1.5}
-  .ghc-equity-note strong{opacity:1}
-  .ghc-links{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
-  .ghc-link{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:40px;font-size:11px;font-weight:600;letter-spacing:0.03em;text-decoration:none;transition:all 0.15s}
-  .ghc-link.apply{background:rgba(255,255,255,0.18);color:#fff}
-  .ghc-link.apply:hover{background:rgba(255,255,255,0.3)}
-  .ghc-link.info{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7)}
-  .ghc-link.info:hover{background:rgba(255,255,255,0.15)}
+  /* ALERT BANNER */
+  .alert-banner{background:var(--red-pale);border:1px solid #FECACA;border-radius:12px;padding:20px 24px;margin-bottom:40px;display:flex;gap:14px;align-items:flex-start}
+  .alert-banner .icon{font-size:18px;flex-shrink:0;margin-top:1px}
+  .alert-banner h4{font-size:14px;font-weight:700;color:var(--red-mid);margin-bottom:4px}
+  .alert-banner p{font-size:13px;color:#7F1D1D;line-height:1.6}
 
   /* EIS */
   .eis-section{background:var(--sage-deep);border-radius:16px;padding:48px;margin-bottom:48px;color:#fff}
@@ -77,10 +58,15 @@
   .eis-metric{background:rgba(255,255,255,0.07);border-radius:10px;padding:24px;text-align:center}
   .eis-metric .num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--sage-light);line-height:1;margin-bottom:8px}
   .eis-metric .lbl{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5}
-  .eis-conditions{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .eis-conditions{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
   .eis-conditions li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.55}
   .eis-conditions li::before{content:'→';color:var(--sage-light);flex-shrink:0;font-weight:600;margin-top:1px}
-  .eis-links{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+  .eis-links{display:flex;gap:10px;flex-wrap:wrap}
+  .eis-link{display:inline-flex;align-items:center;gap:5px;padding:6px 16px;border-radius:40px;font-size:11px;font-weight:600;text-decoration:none;transition:all 0.15s}
+  .eis-link.apply{background:rgba(255,255,255,0.2);color:#fff}
+  .eis-link.apply:hover{background:rgba(255,255,255,0.3)}
+  .eis-link.info{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75)}
+  .eis-link.info:hover{background:rgba(255,255,255,0.15)}
 
   /* GRANT CARDS */
   .grants-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
@@ -92,8 +78,6 @@
   .fit-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;flex-shrink:0}
   .fit-high{background:var(--sage-pale);color:var(--sage-deep)}
   .fit-med{background:var(--gold-light);color:var(--amber)}
-  .fit-low{background:#FEF2F2;color:#B45309}
-  .fit-new{background:var(--blue-light);color:var(--blue)}
   .fit-upcoming{background:#F5F3FF;color:#6D28D9}
   .grant-admin{font-size:11px;color:var(--mid);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px}
   .grant-amount{font-size:13px;color:var(--sage-deep);font-weight:600;margin-bottom:10px}
@@ -102,11 +86,23 @@
   .grant-quantum{font-family:'DM Serif Display',serif;font-size:26px;color:var(--sage-deep);text-align:right;line-height:1.1}
   .grant-quantum .unit{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--mid);font-weight:500;display:block;text-align:right;margin-top:2px}
   .grant-links{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
-  .grant-link{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:40px;font-size:11px;font-weight:600;text-decoration:none;transition:all 0.15s;letter-spacing:0.03em}
+  .grant-link{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:40px;font-size:11px;font-weight:600;text-decoration:none;transition:all 0.15s}
   .grant-link.apply{background:var(--sage-deep);color:#fff}
   .grant-link.apply:hover{background:var(--charcoal)}
   .grant-link.info{background:var(--sage-pale);color:var(--sage-deep)}
-  .grant-link.info:hover{background:var(--sage-light);color:#fff}
+  .grant-link.info:hover{background:var(--sage);color:#fff}
+
+  /* NOT ELIGIBLE */
+  .not-eligible-section{background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:40px;margin-bottom:48px}
+  .not-eligible-section h3{font-family:'DM Serif Display',serif;font-size:22px;color:var(--charcoal);margin-bottom:6px}
+  .not-eligible-section .ne-sub{font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.6}
+  .ne-grid{display:flex;flex-direction:column;gap:10px}
+  .ne-row{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);align-items:start;font-size:13px}
+  .ne-row:last-child{border:none}
+  .ne-name{font-weight:600;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px}
+  .ne-name::before{content:'✕';color:#B91C1C;flex-shrink:0;font-weight:700;font-size:11px;margin-top:2px}
+  .ne-reason{color:var(--mid);line-height:1.55}
+  .ne-critical{color:#B91C1C;font-weight:600}
 
   /* ROADMAP */
   .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
@@ -150,11 +146,11 @@
   footer a{font-size:12px;color:var(--sage-light);text-decoration:none;font-weight:500}
 
   @media(max-width:768px){
-    .poc-pov-grid{grid-template-columns:1fr}
+    .hero{grid-template-columns:1fr}
     .eis-metrics{grid-template-columns:1fr}
     .eis-conditions{grid-template-columns:1fr}
     .roadmap{grid-template-columns:1fr}
-    .hero{grid-template-columns:1fr}
+    .ne-row{grid-template-columns:1fr;gap:4px}
     nav{padding:0 24px}
     .hero{padding:40px 24px}
     .filter-bar{padding:0 24px;overflow-x:auto}
@@ -177,14 +173,14 @@
 
 <div class="hero">
   <div>
-    <div class="hero-eyebrow">Singapore — Grants, Tax Incentives &amp; R&D Funding</div>
-    <h1>Funding the <em>SG IP Co</em><br>from day one</h1>
-    <p class="hero-sub">A curated map of Enterprise Singapore, IRAS, EDB, and A*STAR grants available to a newly incorporated Singapore IP holding company — with real application links, eligibility, and recommended sequencing.</p>
+    <div class="hero-eyebrow">Singapore — Grants &amp; Tax Incentives · Verified for Lifely</div>
+    <h1>Applicable grants for<br>the <em>SG IP Co</em></h1>
+    <p class="hero-sub">Eligibility-checked against Lifely's actual profile — established AU-based group, no existing SG R&D team, core IP is furniture trademarks and designs. Grants that don't qualify have been removed.</p>
   </div>
   <div class="hero-meta">
-    <div class="hero-stat"><div class="num">S$1.2M</div><div class="lbl">Max non-dilutive R&D grant<br>(POC + POV combined)</div></div>
+    <div class="hero-stat"><div class="num">400%</div><div class="lbl">Tax deduction on SG IP<br>registration (EIS — top pick)</div></div>
     <div class="hero-divider"></div>
-    <div class="hero-stat"><div class="num">12</div><div class="lbl">Grant &amp; incentive<br>programmes identified</div></div>
+    <div class="hero-stat"><div class="num">7</div><div class="lbl">Applicable grant &amp;<br>incentive programmes</div></div>
   </div>
 </div>
 
@@ -192,78 +188,48 @@
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" onclick="filterGrants('all',this)">All</button>
   <button class="filter-btn" onclick="filterGrants('rd',this)">R&amp;D / Innovation</button>
-  <button class="filter-btn" onclick="filterGrants('poc',this)">POC / POV</button>
   <button class="filter-btn" onclick="filterGrants('collab',this)">Collaboration / Intl</button>
   <button class="filter-btn" onclick="filterGrants('tax',this)">Tax Incentives</button>
+  <button class="filter-btn" onclick="filterGrants('removed',this)">Not Applicable ✕</button>
 </div>
 
 <div class="content">
 
-  <!-- POC / POV -->
-  <div class="section-label"><span>Startup SG Tech — POC &amp; POV</span></div>
-  <div class="poc-pov-grid" data-cat="poc">
-    <div class="grant-hero-card poc">
-      <div class="ghc-tag">POC — Proof of Concept</div>
-      <div class="ghc-amount">S$400,000</div>
-      <div class="ghc-subtitle">Maximum grant quantum</div>
-      <ul class="ghc-rows">
-        <li><span class="key">Duration</span><span class="val">Up to 18 months</span></li>
-        <li><span class="key">Objective</span><span class="val">Validate technical &amp; scientific feasibility of proprietary tech</span></li>
-        <li><span class="key">Capital req.</span><span class="val">10% paid-up capital (e.g. S$40K for full grant)</span></li>
-        <li><span class="key">Disbursement</span><span class="val">Milestone-based; 20% upfront on first milestone</span></li>
-        <li><span class="key">Admin</span><span class="val">Enterprise Singapore (EnterpriseSG)</span></li>
-      </ul>
-      <div class="ghc-equity-note"><strong>⚠ Equity component:</strong> EnterpriseSG may subscribe shares equal to 50% of grant at a qualifying round, capped at 49% of total shareholding.</div>
-      <div class="ghc-links">
-        <a href="https://go.gov.sg/helloesg" target="_blank" rel="noopener" class="ghc-link apply">📝 Submit ROI</a>
-        <a href="https://www.enterprisesg.gov.sg/grow-your-business/partner-with-singapore/innovation-and-startups/join-startup-sg" target="_blank" rel="noopener" class="ghc-link info">ℹ️ Details</a>
-      </div>
-    </div>
-    <div class="grant-hero-card pov">
-      <div class="ghc-tag">POV — Proof of Value</div>
-      <div class="ghc-amount">S$800,000</div>
-      <div class="ghc-subtitle">Maximum grant quantum</div>
-      <ul class="ghc-rows">
-        <li><span class="key">Duration</span><span class="val">Up to 30 months</span></li>
-        <li><span class="key">Objective</span><span class="val">Build working prototype + validate commercial merit with reference clients</span></li>
-        <li><span class="key">Capital req.</span><span class="val">20% paid-up capital (e.g. S$160K for full grant)</span></li>
-        <li><span class="key">Disbursement</span><span class="val">Milestone-based; 20% upfront on first milestone</span></li>
-        <li><span class="key">Admin</span><span class="val">Enterprise Singapore (EnterpriseSG)</span></li>
-      </ul>
-      <div class="ghc-equity-note"><strong>⚠ Equity component:</strong> EnterpriseSG may subscribe shares equal to 50% of grant at a qualifying round, capped at 49% of total shareholding.</div>
-      <div class="ghc-links">
-        <a href="https://go.gov.sg/helloesg" target="_blank" rel="noopener" class="ghc-link apply">📝 Submit ROI</a>
-        <a href="https://www.enterprisesg.gov.sg/grow-your-business/partner-with-singapore/innovation-and-startups/join-startup-sg" target="_blank" rel="noopener" class="ghc-link info">ℹ️ Details</a>
-      </div>
+  <!-- IDI ALERT -->
+  <div class="alert-banner" data-cat="removed">
+    <div class="icon">🔴</div>
+    <div>
+      <h4>Critical: IDI (IP Development Incentive) — CLOSED to new applicants</h4>
+      <p>The IDI — Singapore's flagship 5–10% concessionary tax rate on IP income — was the primary reason to set up an SG IP Co. However, the official EDB circular confirms: <strong>"No IDI award may be approved after 31 December 2023."</strong> New applications are no longer accepted. The EIS (below) remains the most valuable accessible incentive. Engaging EDB directly to confirm whether any successor scheme exists is recommended.</p>
     </div>
   </div>
 
   <!-- EIS -->
-  <div class="section-label"><span>Enterprise Innovation Scheme — R&amp;D Tax</span></div>
+  <div class="section-label"><span>Enterprise Innovation Scheme (EIS) — Best Available</span></div>
   <div class="eis-section" data-cat="rd">
     <h2>Enterprise Innovation Scheme (EIS)</h2>
-    <p class="sub">IRAS · Applicable from YA 2024 to YA 2028 · Claim via annual tax return</p>
+    <p class="sub">IRAS · Applicable from YA 2024 to YA 2028 · Claim via annual tax return · No pre-approval needed</p>
     <div class="eis-metrics">
       <div class="eis-metric"><div class="num">400%</div><div class="lbl">Tax deduction on qualifying IP registration costs (first S$400K/YA)</div></div>
-      <div class="eis-metric"><div class="num">250%</div><div class="lbl">Enhanced deduction on R&D staff costs &amp; consumables in Singapore</div></div>
-      <div class="eis-metric"><div class="num">S$20K</div><div class="lbl">Max annual cash payout (20% conversion on up to S$100K qualifying spend)</div></div>
+      <div class="eis-metric"><div class="num">250%</div><div class="lbl">Enhanced deduction on R&D staff costs &amp; consumables performed in Singapore</div></div>
+      <div class="eis-metric"><div class="num">S$20K</div><div class="lbl">Max annual cash payout — 20% conversion on up to S$100K qualifying spend (pre-profit option)</div></div>
     </div>
     <ul class="eis-conditions">
-      <li>R&D must be performed in Singapore — qualifying staff costs and consumables only</li>
-      <li>Company must be SG-registered with min. 3 local employees earning ≥ S$1,400/month</li>
-      <li>Additional 300% deduction on first S$400K R&D expenditure under EIS (on top of base 100%)</li>
-      <li>Cash payout option useful for pre-revenue IP Co — 20% conversion rate, capped at S$20K/YA</li>
+      <li>Lifely qualifies: file trademarks, patents, and designs with IPOS and claim 400% deduction</li>
+      <li>Cash payout (S$20K/YA) useful if SG IP Co is pre-profit in early years</li>
       <li>IP registration deduction covers patents, trademarks, and registered designs filed in SG</li>
-      <li>Budget 2026: AI expenditure now qualifies for enhanced deductions (YA 2027–2028)</li>
+      <li>Budget 2026: AI expenditure now qualifies (YA 2027–2028) — relevant for Little Wonder / Little Baby</li>
+      <li>No minimum spend. Claim when filing annual corporate tax return with IRAS</li>
+      <li>Must maintain records of qualifying activities and expenditure — keep all IPOS receipts</li>
     </ul>
     <div class="eis-links">
-      <a href="https://www.iras.gov.sg/schemes/disbursement-schemes/enterprise-innovation-scheme-(eis)" target="_blank" rel="noopener" class="ghc-link apply">📝 IRAS EIS Page</a>
-      <a href="https://www.gobusiness.gov.sg/enterprise-innovation-scheme/" target="_blank" rel="noopener" class="ghc-link info">ℹ️ GoBusiness Guide</a>
+      <a href="https://www.iras.gov.sg/schemes/disbursement-schemes/enterprise-innovation-scheme-(eis)" target="_blank" rel="noopener" class="eis-link apply">📝 IRAS EIS Page</a>
+      <a href="https://www.gobusiness.gov.sg/enterprise-innovation-scheme/" target="_blank" rel="noopener" class="eis-link info">ℹ️ GoBusiness Guide</a>
     </div>
   </div>
 
-  <!-- OTHER GRANTS -->
-  <div class="section-label"><span>Grants &amp; Subsidies</span></div>
+  <!-- GRANTS -->
+  <div class="section-label"><span>Applicable Grant Programmes</span></div>
   <div class="grants-grid">
 
     <div class="grant-card" data-cat="collab">
@@ -273,8 +239,8 @@
           <span class="fit-tag fit-high">● High Fit</span>
         </div>
         <div class="grant-admin">Enterprise Singapore · Business Grants Portal</div>
-        <div class="grant-amount">Up to 50% of qualifying costs (70% for sustainability projects to Mar 2026)</div>
-        <p class="grant-desc">Covers third-party consultancy, software, equipment and internal manpower costs. Ideal for IP strategy projects, innovation capability building, and product development. No maximum quantum per project — eligible as soon as SG IP Co is registered.</p>
+        <div class="grant-amount">Up to 50% of qualifying costs · Lifely qualifies (revenue well under S$500M cap)</div>
+        <p class="grant-desc">Covers third-party consultancy, software, and manpower costs. Best used for: IP strategy consulting, licensing agreement structuring, and capability building for the SG IP Co. Apply before starting any project — cannot be backdated.</p>
         <div class="grant-links">
           <a href="https://www.businessgrantsportal.gov.sg" target="_blank" rel="noopener" class="grant-link apply">📝 Apply on BGP</a>
           <a href="https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant" target="_blank" rel="noopener" class="grant-link info">ℹ️ Details</a>
@@ -286,46 +252,12 @@
     <div class="grant-card" data-cat="collab">
       <div class="grant-card-left">
         <div class="grant-card-header">
-          <div class="grant-name">Market Readiness Assistance (MRA)</div>
-          <span class="fit-tag fit-high">● High Fit</span>
-          <span class="fit-tag fit-new">🆕 Added</span>
-        </div>
-        <div class="grant-admin">Enterprise Singapore · Business Grants Portal</div>
-        <div class="grant-amount">Up to S$100,000 per company per new market · 50% support (enhanced to 70% from 1 Apr 2026)</div>
-        <p class="grant-desc">Co-funds overseas market entry: IP registration in target countries, market research, business matching, and market setup. Particularly relevant for filing trademarks and patents in AU, US, UK markets. Available until EDGE launches H2 2026.</p>
-        <div class="grant-links">
-          <a href="https://www.businessgrantsportal.gov.sg" target="_blank" rel="noopener" class="grant-link apply">📝 Apply on BGP</a>
-          <a href="https://www.enterprisesg.gov.sg/financial-support/market-readiness-assistance-grant" target="_blank" rel="noopener" class="grant-link info">ℹ️ Details</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">S$100K<span class="unit">per new market</span></div></div>
-    </div>
-
-    <div class="grant-card" data-cat="collab">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">EDG Co-Innovation Programme (EDG CIP)</div>
-          <span class="fit-tag fit-high">● High Fit</span>
-        </div>
-        <div class="grant-admin">Enterprise Singapore · Eureka Network</div>
-        <div class="grant-amount">Up to 50% of qualifying R&D costs for bilateral cross-border collaboration</div>
-        <p class="grant-desc">Supports strategic R&D partnerships with companies or institutions in partner countries — including UK, Canada, Australia, and Europe. Ideal for leveraging the group's AU, UK and CA Ops Co entities. Active bilateral calls available.</p>
-        <div class="grant-links">
-          <a href="https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant" target="_blank" rel="noopener" class="grant-link apply">📝 Via EDG on BGP</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">50%<span class="unit">bilateral R&D subsidy</span></div></div>
-    </div>
-
-    <div class="grant-card" data-cat="collab">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
           <div class="grant-name">EDGE Grant (Unified)</div>
-          <span class="fit-tag fit-upcoming">⏳ Upcoming</span>
+          <span class="fit-tag fit-upcoming">⏳ Launching H2 2026</span>
         </div>
-        <div class="grant-admin">Enterprise Singapore · Launching H2 2026</div>
-        <div class="grant-amount">Up to S$100,000 per year for eligible activities</div>
-        <p class="grant-desc">New consolidated grant replacing MRA + EDG + PSG for simpler applications. Single simplified process for productivity, capability development, and internationalisation. Budget 2026 announcement — not yet open for applications.</p>
+        <div class="grant-admin">Enterprise Singapore · Budget 2026 — Not yet open</div>
+        <div class="grant-amount">Up to S$100,000 per year · Replaces EDG + MRA + PSG</div>
+        <p class="grant-desc">New consolidated grant announced in Budget 2026. Single simplified application process covering productivity, capability development, and business development. Will replace the EDG when it launches. Register for updates via EnterpriseSG.</p>
         <div class="grant-links">
           <a href="https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant" target="_blank" rel="noopener" class="grant-link info">ℹ️ Watch for Updates</a>
         </div>
@@ -333,88 +265,15 @@
       <div class="grant-card-right"><div class="grant-quantum">S$100K<span class="unit">per year (upcoming)</span></div></div>
     </div>
 
-    <div class="grant-card" data-cat="rd">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">Research &amp; Innovation Scheme for Companies (RISC)</div>
-          <span class="fit-tag fit-high">● High Fit</span>
-        </div>
-        <div class="grant-admin">Economic Development Board (EDB)</div>
-        <div class="grant-amount">60% co-funding on local R&D manpower · 30% on foreign manpower &amp; equipment · 3-year qualifying period</div>
-        <p class="grant-desc">Directly funds expansion of R&D and innovation teams in Singapore. Covers basic monthly salaries of qualifying R&D staff (min. S$5,000/month, capped at S$20,000 for support), equipment purchases, and lease costs. Project must develop new or significantly improved products or processes.</p>
-        <div class="grant-links">
-          <a href="https://www.edb.gov.sg/en/incentives-and-programmes/incentives-and-facilitation-programmes.html" target="_blank" rel="noopener" class="grant-link apply">📝 Apply to EDB</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">60%<span class="unit">local manpower subsidy</span></div></div>
-    </div>
-
-    <div class="grant-card" data-cat="rd">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">IAF-ICP — Industry Alignment Fund</div>
-          <span class="fit-tag fit-med">◐ Medium Fit</span>
-        </div>
-        <div class="grant-admin">A*STAR · RIE2030 (new call expected 2026)</div>
-        <div class="grant-amount">No minimum; up to S$25M per project · 1:1.5 leverage ratio with industry</div>
-        <p class="grant-desc">Supports strategic R&D collaborations between public research institutions (A*STAR, NUS, NTU) and industry. SG IP Co would participate as the industry partner. RIE2025 call closed; RIE2030 details expected Q1–Q2 2026. Grant only open to application by public research institutions — industry partner role requires partnership.</p>
-        <div class="grant-links">
-          <a href="https://www.a-star.edu.sg/Research/funding-opportunities/iaf-icp" target="_blank" rel="noopener" class="grant-link info">ℹ️ A*STAR IAF-ICP</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">S$25M<span class="unit">max (large projects)</span></div></div>
-    </div>
-
-  </div>
-
-  <!-- TAX INCENTIVES -->
-  <div class="section-label"><span>Tax Incentives</span></div>
-  <div class="grants-grid">
-
-    <div class="grant-card" data-cat="tax">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">IP Development Incentive (IDI)</div>
-          <span class="fit-tag fit-high">● High Fit</span>
-        </div>
-        <div class="grant-admin">Economic Development Board (EDB) · Apply directly</div>
-        <div class="grant-amount">Reduced tax rate of 5%, 10%, or 15% on qualifying IP income · Incentive period up to 10 years</div>
-        <p class="grant-desc">The flagship tax incentive for IP holding companies in Singapore. Grants a concessionary corporate tax rate — down to 5% — on qualifying IP income (royalties, licensing fees, IP commercialisation gains) via the OECD-compliant modified nexus approach. Rewards R&D performed in Singapore. Elections are irrevocable.</p>
-        <div class="grant-links">
-          <a href="https://invest.edb.gov.sg/find-government-support/intellectual-property-development-incentive" target="_blank" rel="noopener" class="grant-link apply">📝 Apply via EDB</a>
-          <a href="https://www.edb.gov.sg/content/dam/edb-en/how-we-help/incentive-and-schemes/factsheets/IDI%20Factsheet.pdf" target="_blank" rel="noopener" class="grant-link info">📄 IDI Factsheet</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">5%<span class="unit">min. effective tax on IP income</span></div></div>
-    </div>
-
-    <div class="grant-card" data-cat="tax">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">Startup Tax Exemption (SUTE)</div>
-          <span class="fit-tag fit-high">● High Fit</span>
-          <span class="fit-tag fit-new">🆕 Added</span>
-        </div>
-        <div class="grant-admin">IRAS · Automatic — claim in tax return</div>
-        <div class="grant-amount">75% exemption on first S$100K + 50% exemption on next S$100K · First 3 YAs</div>
-        <p class="grant-desc">Substantial tax savings in the critical early years. No application required — automatically available to qualifying new companies in their first three Years of Assessment. ⚠️ Not available if the company is purely investment holding — must have operational substance.</p>
-        <div class="grant-links">
-          <a href="https://www.iras.gov.sg/taxes/corporate-income-tax/basics-of-corporate-income-tax/tax-exemptions-for-start-up-companies/" target="_blank" rel="noopener" class="grant-link info">ℹ️ IRAS Details</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">75%<span class="unit">exemption (first S$100K)</span></div></div>
-    </div>
-
-    <div class="grant-card" data-cat="tax">
+    <div class="grant-card" data-cat="collab">
       <div class="grant-card-left">
         <div class="grant-card-header">
           <div class="grant-name">Double Tax Deduction for Internationalisation (DTDi)</div>
           <span class="fit-tag fit-high">● High Fit</span>
-          <span class="fit-tag fit-new">🆕 Added</span>
         </div>
-        <div class="grant-admin">Enterprise Singapore / IRAS</div>
-        <div class="grant-amount">200% tax deduction on qualifying overseas expansion expenses · Cap increased to S$400K (Budget 2026)</div>
-        <p class="grant-desc">Double deduction on eligible overseas expansion expenses: market development trips, overseas IP registration, trade fairs, market studies. Particularly valuable if SG IP Co is licensing IP to multiple overseas Ops Cos and needs to establish presence in those markets.</p>
+        <div class="grant-admin">Enterprise Singapore / IRAS · Budget 2026: cap raised to S$400K</div>
+        <div class="grant-amount">200% tax deduction on qualifying overseas IP registration &amp; market development costs</div>
+        <p class="grant-desc">Directly applicable: covers costs to register Lifely's trademarks and patents in AU, US, UK, CA, NZ markets. Also covers market research and business development trips. File via BGP for pre-approval or claim in annual tax return.</p>
         <div class="grant-links">
           <a href="https://www.enterprisesg.gov.sg/financial-support/double-tax-deduction-for-internationalisation" target="_blank" rel="noopener" class="grant-link apply">📝 Apply / Info</a>
         </div>
@@ -422,16 +281,21 @@
       <div class="grant-card-right"><div class="grant-quantum">200%<span class="unit">tax deduction</span></div></div>
     </div>
 
+  </div>
+
+  <!-- TAX INCENTIVES -->
+  <div class="section-label"><span>Applicable Tax Incentives</span></div>
+  <div class="grants-grid">
+
     <div class="grant-card" data-cat="tax">
       <div class="grant-card-left">
         <div class="grant-card-header">
           <div class="grant-name">Writing-Down Allowances (WDA) for IP</div>
           <span class="fit-tag fit-high">● High Fit</span>
-          <span class="fit-tag fit-new">🆕 Added</span>
         </div>
-        <div class="grant-admin">IRAS · Claim in tax return</div>
-        <div class="grant-amount">Deduct capital cost of IP acquisition over 5, 10, or 15 years (straight-line)</div>
-        <p class="grant-desc">Claim allowances on capital spent to acquire IP rights — patents, trademarks, copyrights, trade secrets, and registered designs. Effectively lets you deduct the cost of transferring existing group IP into the SG entity over the chosen period. Critical for the IP transfer from AU to SG.</p>
+        <div class="grant-admin">IRAS · Claim in annual tax return</div>
+        <div class="grant-amount">Deduct capital cost of acquiring IP rights over 5, 10, or 15 years (straight-line)</div>
+        <p class="grant-desc">When Lifely transfers existing IP (trademarks, designs, patents) from AU entities to SG IP Co, the acquisition cost can be written down over the chosen period. This effectively deducts the IP transfer price from SG taxable income. Critical for IP consolidation.</p>
         <div class="grant-links">
           <a href="https://www.iras.gov.sg/taxes/corporate-income-tax/income-deductions-for-companies/claiming-allowances/writing-down-allowances-for-intellectual-property-rights-(iprs)" target="_blank" rel="noopener" class="grant-link info">ℹ️ IRAS WDA Guide</a>
         </div>
@@ -442,13 +306,28 @@
     <div class="grant-card" data-cat="tax">
       <div class="grant-card-left">
         <div class="grant-card-header">
+          <div class="grant-name">Startup Tax Exemption (SUTE)</div>
+          <span class="fit-tag fit-med">◐ Conditional Fit</span>
+        </div>
+        <div class="grant-admin">IRAS · Automatic — claim in tax return · First 3 YAs</div>
+        <div class="grant-amount">75% exemption on first S$100K chargeable income + 50% on next S$100K</div>
+        <p class="grant-desc">Substantial savings in early years — no application needed. ⚠️ Key caveat: SUTE is NOT available to pure investment holding companies. SG IP Co must have operational substance — active IP management, licensing administration, or R&D coordination — not just passively holding assets.</p>
+        <div class="grant-links">
+          <a href="https://www.iras.gov.sg/taxes/corporate-income-tax/basics-of-corporate-income-tax/tax-exemptions-for-start-up-companies/" target="_blank" rel="noopener" class="grant-link info">ℹ️ IRAS SUTE Details</a>
+        </div>
+      </div>
+      <div class="grant-card-right"><div class="grant-quantum">75%<span class="unit">exemption (first S$100K)</span></div></div>
+    </div>
+
+    <div class="grant-card" data-cat="tax">
+      <div class="grant-card-left">
+        <div class="grant-card-header">
           <div class="grant-name">CIT Rebate YA 2026</div>
-          <span class="fit-tag fit-med">◐ Medium Fit</span>
-          <span class="fit-tag fit-new">🆕 Added</span>
+          <span class="fit-tag fit-med">◐ Applies if Filing YA 2026</span>
         </div>
         <div class="grant-admin">IRAS · Automatic in tax assessment</div>
         <div class="grant-amount">40% corporate tax rebate, capped at S$30K + S$1,500 cash grant (if ≥ 1 local employee)</div>
-        <p class="grant-desc">One-off rebate for YA 2026. Small but free — automatically applied. The S$1,500 cash grant requires at least one local employee on CPF. Stacks with other incentives.</p>
+        <p class="grant-desc">One-off rebate for YA 2026. Automatically applied — stacks with other incentives. Applies only if SG IP Co is incorporated and filing taxes in YA 2026 (assessment year ending Dec 2026). Small but zero-effort.</p>
         <div class="grant-links">
           <a href="https://www.iras.gov.sg/taxes/corporate-income-tax/basics-of-corporate-income-tax/corporate-income-tax-rate-rebates-and-tax-exemption-schemes" target="_blank" rel="noopener" class="grant-link info">ℹ️ IRAS CIT Rates</a>
         </div>
@@ -456,80 +335,95 @@
       <div class="grant-card-right"><div class="grant-quantum">40%<span class="unit">CIT rebate (cap S$30K)</span></div></div>
     </div>
 
-    <div class="grant-card" data-cat="tax">
-      <div class="grant-card-left">
-        <div class="grant-card-header">
-          <div class="grant-name">Refundable Investment Credit (RIC)</div>
-          <span class="fit-tag fit-med">◐ Medium Fit</span>
-        </div>
-        <div class="grant-admin">EDB / Enterprise Singapore · Approval-basis · 10-year qualifying period</div>
-        <div class="grant-amount">Up to 50% support on each qualifying expenditure category · Unused credits refunded in cash within 4 years</div>
-        <p class="grant-desc">Budget 2024 introduction. Designed to be Pillar Two-compatible (QRTC status). Credits offset corporate income tax; unused portions refunded in cash. Covers R&D, IP, and innovation-related capex. Requires sizeable investment commitment — negotiated with EDB/EnterpriseSG.</p>
-        <div class="grant-links">
-          <a href="https://www.enterprisesg.gov.sg/financial-support/refundable-investment-credit" target="_blank" rel="noopener" class="grant-link apply">📝 EnterpriseSG RIC</a>
-          <a href="https://www.iras.gov.sg/schemes/disbursement-schemes/refundable-investment-credit-(ric)" target="_blank" rel="noopener" class="grant-link info">ℹ️ IRAS RIC Page</a>
-          <a href="https://www.edb.gov.sg/content/dam/edb-en/how-we-help/incentive-and-schemes/factsheets/RIC%20Factsheet.pdf" target="_blank" rel="noopener" class="grant-link info">📄 RIC Factsheet</a>
-        </div>
-      </div>
-      <div class="grant-card-right"><div class="grant-quantum">50%<span class="unit">credit on qualifying capex</span></div></div>
-    </div>
+  </div>
 
+  <!-- NOT APPLICABLE -->
+  <div class="section-label"><span>Grants Removed — Not Applicable for Lifely</span></div>
+  <div class="not-eligible-section" data-cat="removed">
+    <h3>Why these were excluded</h3>
+    <p class="ne-sub">Each grant was assessed against Lifely's actual profile: established AU-based group, IP is primarily furniture trademarks and designs, no Singapore R&D team, SG IP Co is a new holding entity licensing to its own subsidiaries.</p>
+    <div class="ne-grid">
+      <div class="ne-row">
+        <div class="ne-name"><span class="ne-critical">IP Development Incentive (IDI)</span></div>
+        <div class="ne-reason"><strong class="ne-critical">Officially closed.</strong> EDB circular confirms: "No IDI award may be approved after 31 December 2023." This was the flagship 5–10% concessionary tax rate on IP income. No longer available for new applicants. Confirm directly with EDB whether a successor scheme exists.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">Startup SG Tech (POC/POV)</div>
+        <div class="ne-reason">Designed for early-stage tech startups commercialising proprietary technology that has not yet been commercialised. Lifely's core IP (furniture trademarks, product designs) is already fully commercialised. SG IP Co is a holding entity, not a tech startup conducting R&D.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">Market Readiness Assistance (MRA)</div>
+        <div class="ne-reason">For Singapore companies entering new overseas markets to sell to external (third-party) customers. SG IP Co licenses IP to its own subsidiaries — intra-group transactions are excluded. MRA would apply to the operating entities, not the IP holding company.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">RISC (Research &amp; Innovation Scheme for Companies)</div>
+        <div class="ne-reason">Co-funds salaries of R&D staff physically based in Singapore. Lifely has no Singapore-based R&D team. Routine IP management and licensing administration do not qualify — must be genuine science/technology innovation creating new products or processes.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">EDG Co-Innovation Programme (CIP)</div>
+        <div class="ne-reason">Requires a formal, structured cross-border R&D collaboration between the SG entity and a foreign company or institution. No such collaboration exists between Lifely SG IP Co and the AU/UK/CA Ops Cos at this stage.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">IAF-ICP (A*STAR)</div>
+        <div class="ne-reason">Deep tech research partnerships with A*STAR, NUS, or NTU. Designed for genuine scientific research in advanced fields. Furniture brand trademarks and product designs do not meet the research depth required. No existing A*STAR relationship.</div>
+      </div>
+      <div class="ne-row">
+        <div class="ne-name">Refundable Investment Credit (RIC)</div>
+        <div class="ne-reason">Requires a sizeable, negotiated investment commitment with EDB — typically reserved for companies making hundreds of millions in Singapore capex. Not applicable at Lifely's current stage and entity size.</div>
+      </div>
+    </div>
   </div>
 
   <!-- ROADMAP -->
-  <div class="section-label"><span>Recommended Grant Sequencing</span></div>
+  <div class="section-label"><span>Recommended Sequencing</span></div>
   <div class="roadmap">
     <div class="roadmap-phase">
-      <div class="phase-header"><div class="phase-num">Phase 1 · Year 1</div><div class="phase-title">Foundation</div></div>
+      <div class="phase-header"><div class="phase-num">Phase 1 · Immediately</div><div class="phase-title">Register &amp; Claim</div></div>
       <div class="phase-body">
         <ul class="phase-items">
-          <li>EIS — claim 400% IP registration deductions immediately</li>
-          <li>SUTE — automatic 75%/50% tax exemption for first 3 YAs</li>
-          <li>EDG — IP strategy &amp; product development (50% subsidy)</li>
-          <li>IDI — apply to EDB for 5–10% concessionary rate</li>
-          <li>RISC — 60% co-funding on local R&D staff from day one</li>
-          <li>WDA — begin writing down IP transfer costs</li>
-          <li>MRA — 50–70% co-fund for overseas IP registration</li>
+          <li>Incorporate SG IP Co via ACRA BizFile+</li>
+          <li>Register trademarks and designs with IPOS — EIS deductions accrue from date of spend</li>
+          <li>Submit EDG application on Business Grants Portal for IP strategy consultancy</li>
+          <li>Confirm SUTE eligibility with tax advisor (must have operational substance)</li>
+          <li>Claim WDA when transferring existing AU IP to SG entity</li>
         </ul>
-        <div class="phase-note">Low barrier. EIS via IRAS at year-end. EDG + MRA on BGP. Engage EDB directly for IDI and RISC.</div>
+        <div class="phase-note">File EIS via IRAS at year-end. Submit EDG on BGP before starting any project.</div>
       </div>
     </div>
     <div class="roadmap-phase">
-      <div class="phase-header"><div class="phase-num">Phase 2 · Year 1–2</div><div class="phase-title">Innovation</div></div>
+      <div class="phase-header"><div class="phase-num">Phase 2 · Year 1</div><div class="phase-title">Optimise Tax</div></div>
       <div class="phase-body">
         <ul class="phase-items">
-          <li>Startup SG Tech POC — up to S$400K for technical validation</li>
-          <li>EDG CIP — bilateral R&D leveraging AU / UK / CA Ops Co</li>
-          <li>DTDi — double deduction on overseas expansion costs</li>
-          <li>EDGE — transition from MRA/EDG when it launches H2 2026</li>
+          <li>Claim DTDi — 200% deduction on overseas IP registration costs (AU/US/UK/CA/NZ trademark filings)</li>
+          <li>Monitor EDGE Grant launch (H2 2026) and transition from EDG</li>
+          <li>Engage EDB directly to confirm if any IDI successor scheme exists</li>
+          <li>Engage transfer pricing specialist — set arm's-length royalty rates before first licence agreement</li>
         </ul>
-        <div class="phase-note">Submit ROI at go.gov.sg/helloesg. ~2–3 month evaluation cycle.</div>
+        <div class="phase-note">Transfer pricing documentation must be in place before intercompany royalty flows begin.</div>
       </div>
     </div>
     <div class="roadmap-phase">
-      <div class="phase-header"><div class="phase-num">Phase 3 · Year 2–4</div><div class="phase-title">Scale</div></div>
+      <div class="phase-header"><div class="phase-num">Phase 3 · Year 2+</div><div class="phase-title">Scale &amp; Reassess</div></div>
       <div class="phase-body">
         <ul class="phase-items">
-          <li>Startup SG Tech POV — up to S$800K for prototype + commercialisation</li>
-          <li>IAF-ICP — partner with A*STAR/NUS for deep R&D</li>
-          <li>RIC — negotiate Refundable Investment Credit with EDB</li>
+          <li>Reassess RISC eligibility if SG IP Co hires local R&D staff (e.g. for Little Wonder / Little Baby tech)</li>
+          <li>Reassess IDI successor scheme eligibility when / if EDB announces a replacement</li>
+          <li>Explore EDGE Grant fully once launched</li>
         </ul>
-        <div class="phase-note">Requires POC completion and reference customer pipeline. RIC negotiated directly with EDB.</div>
+        <div class="phase-note">The grant landscape may change — re-check eligibility annually as the entity grows and SG substance increases.</div>
       </div>
     </div>
   </div>
 
   <!-- ELIGIBILITY -->
-  <div class="section-label"><span>Eligibility Checklist</span></div>
+  <div class="section-label"><span>Key Requirements to Maintain</span></div>
   <div class="eligibility-grid" style="margin-bottom:48px">
     <div class="elig-row elig-ok"><span class="elig-icon">✅</span>Incorporated as Pte. Ltd. in Singapore via ACRA</div>
-    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>≥ 30% local equity held by Singapore Citizens or PRs — required for most ESG grants</div>
-    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>At least 3 full-time local employees earning ≥ S$1,400/month (required for EIS cash payout)</div>
-    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>Company age &lt; 10 years at time of application (Startup SG Tech requirement)</div>
-    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>Paid-up capital ≥ 10% of POC quantum or 20% of POV quantum — target S$160K for full POV</div>
-    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>R&D activities conducted primarily in Singapore (for enhanced deduction rates)</div>
-    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>Technology must be proprietary, novel, and not yet commercially launched before application</div>
-    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>Apply before project commencement — grants cannot be backdated</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>≥ 30% local equity held by Singapore Citizens or PRs — required for EDG and most ESG grants</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>Operational substance required — IP Co must actively manage IP, not just passively hold it (critical for SUTE and CFC defence)</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>Transfer pricing documentation — must be in place BEFORE first royalty payment to/from any Ops Co</div>
+    <div class="elig-row elig-ok"><span class="elig-icon">✅</span>Maintain records of all qualifying IP registration expenditure for EIS claims</div>
+    <div class="elig-row elig-warn"><span class="elig-icon">⚠️</span>AU CFC rules — engage AU tax specialist to ensure SG income is not attributed back to AU entity</div>
   </div>
 
   <!-- NEXT STEPS -->
@@ -539,49 +433,42 @@
       <div class="step-num">1</div>
       <div class="step-content">
         <h4>Incorporate SG IP Co via <a href="https://www.bizfile.gov.sg/" target="_blank" rel="noopener">ACRA BizFile+</a></h4>
-        <p>Register as a Pte. Ltd. Ensure ≥ 30% local shareholding, appoint a Singapore-resident director, and set paid-up capital at S$160K to unlock full POV grant quantum.</p>
+        <p>Register as Pte. Ltd. Ensure ≥ 30% local shareholding, appoint SG-resident director, and confirm the entity has genuine operational substance (not a pure brass-plate holding company).</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <h4>Register IP assets with <a href="https://www.ipos.gov.sg/" target="_blank" rel="noopener">IPOS</a></h4>
-        <p>File patents, trademarks, and designs in Singapore immediately — EIS deductions accrue from the date of expenditure, so early filing maximises the 400% deduction window.</p>
+        <h4>File IP with <a href="https://www.ipos.gov.sg/" target="_blank" rel="noopener">IPOS</a> — immediately triggers EIS deductions</h4>
+        <p>File trademarks, patents, and designs as soon as the entity is incorporated. EIS 400% deduction accrues from the date of expenditure — every week of delay costs money.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
         <h4>Submit EDG on <a href="https://www.businessgrantsportal.gov.sg" target="_blank" rel="noopener">Business Grants Portal</a></h4>
-        <p>Apply for EDG to subsidise IP strategy consultancy and product development costs (50%). No minimum spend. Quick turnaround for straightforward applications.</p>
+        <p>Apply for EDG to subsidise IP strategy consulting and licensing structure work (50%). Must apply before the project commences — cannot be backdated.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
       <div class="step-content">
-        <h4>Register Interest — Startup SG Tech POC via <a href="https://go.gov.sg/helloesg" target="_blank" rel="noopener">go.gov.sg/helloesg</a></h4>
-        <p>Submit an ROI. EnterpriseSG responds within 2 weeks. Aim for POC first — faster approval, lower capital requirement.</p>
+        <h4>Engage transfer pricing specialist</h4>
+        <p>Royalty rates between SG IP Co and AU/US/UK/CA/NZ Ops Cos must be set at arm's-length rates with contemporaneous documentation. This must be done before any intercompany licence agreement is signed.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">5</div>
       <div class="step-content">
-        <h4>Apply for IDI with <a href="https://invest.edb.gov.sg/find-government-support/intellectual-property-development-incentive" target="_blank" rel="noopener">EDB</a></h4>
-        <p>The crown jewel for an IP Co. Negotiate the IDI award directly with EDB. Nexus ratio rewards SG-based R&D — hire qualifying R&D staff locally from the start. Elections are irrevocable.</p>
+        <h4>Engage EDB directly — confirm IDI successor</h4>
+        <p>The IDI was the primary tax incentive for SG IP Cos and is now closed to new awards. Contact EDB at <a href="https://invest.edb.gov.sg/find-government-support/intellectual-property-development-incentive" target="_blank" rel="noopener">invest.edb.gov.sg</a> to determine if a replacement scheme has been announced or is in development.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">6</div>
       <div class="step-content">
-        <h4>Submit RISC application to <a href="https://www.edb.gov.sg/en/incentives-and-programmes/incentives-and-facilitation-programmes.html" target="_blank" rel="noopener">EDB</a></h4>
-        <p>RISC co-funds 60% of local R&D staff salaries (S$5K–S$20K/month) over a 3-year qualifying period. Apply with a clearly defined R&D project scope.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">7</div>
-      <div class="step-content">
-        <h4>Watch for RIE2030 IAF-ICP Open Call (2026)</h4>
-        <p>RIE2025 closed. <a href="https://www.a-star.edu.sg/Research/funding-opportunities/iaf-icp" target="_blank" rel="noopener">A*STAR</a> expected to publish RIE2030 details in 2026. Register interest with an A*STAR Business Development Manager now.</p>
+        <h4>Engage AU tax specialist — CFC rules</h4>
+        <p>Australia's Controlled Foreign Company rules may tax SG IP income back in Australia. Cross-border tax advice is essential before any royalty flows between the SG entity and AU Ops Co.</p>
       </div>
     </div>
   </div>
@@ -599,7 +486,7 @@
     </a>
     <a href="https://www.businessgrantsportal.gov.sg" target="_blank" rel="noopener" class="resource-card">
       <h4>💰 Business Grants Portal</h4>
-      <p>Apply for EDG, MRA, and other EnterpriseSG grants</p>
+      <p>Apply for EDG and other EnterpriseSG grants</p>
     </a>
     <a href="https://www.ipos.gov.sg/eservices/ip-clinics/" target="_blank" rel="noopener" class="resource-card">
       <h4>🩺 IPOS IP Clinics</h4>
@@ -611,22 +498,22 @@
     </a>
     <a href="https://invest.edb.gov.sg/" target="_blank" rel="noopener" class="resource-card">
       <h4>🏛 EDB Investment Portal</h4>
-      <p>IDI, RISC, RIC, and other EDB incentive applications</p>
-    </a>
-    <a href="https://go.gov.sg/helloesg" target="_blank" rel="noopener" class="resource-card">
-      <h4>📝 EnterpriseSG ROI</h4>
-      <p>Register interest for Startup SG Tech and other programmes</p>
+      <p>Contact EDB directly re: IDI successor and other incentives</p>
     </a>
     <a href="https://www.iras.gov.sg/" target="_blank" rel="noopener" class="resource-card">
       <h4>🧾 IRAS</h4>
-      <p>Tax filing, EIS claims, WDA, CIT rebate, SUTE</p>
+      <p>EIS claims, WDA, CIT rebate, SUTE — all tax filings</p>
+    </a>
+    <a href="https://www.enterprisesg.gov.sg/financial-support/double-tax-deduction-for-internationalisation" target="_blank" rel="noopener" class="resource-card">
+      <h4>🌐 DTDi</h4>
+      <p>200% deduction on overseas IP registration and market development</p>
     </a>
   </div>
 
 </div>
 
 <footer>
-  <p>© 2026 The Little Company · Sources: EnterpriseSG, IRAS, EDB, A*STAR, IPOS · Internal Use Only</p>
+  <p>© 2026 The Little Company · Eligibility verified against Lifely group profile · Internal Use Only</p>
   <a href="org-chart.html">← View Group Structure</a>
 </footer>
 
@@ -637,20 +524,14 @@ function filterGrants(cat, btn) {
   const cards = document.querySelectorAll('[data-cat]');
   let firstMatch = null;
   cards.forEach(card => {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.style.display = '';
-      card.style.opacity = '1';
-      card.style.pointerEvents = '';
-      if (!firstMatch) firstMatch = card;
-    } else {
-      card.style.opacity = '0.15';
-      card.style.pointerEvents = 'none';
-    }
+    const matches = cat === 'all' || card.dataset.cat === cat;
+    card.style.opacity = matches ? '1' : '0.12';
+    card.style.pointerEvents = matches ? '' : 'none';
+    if (matches && !firstMatch) firstMatch = card;
   });
   if (firstMatch && cat !== 'all') {
     setTimeout(() => {
       firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // offset for sticky nav + filter bar
       setTimeout(() => window.scrollBy({ top: -130, behavior: 'smooth' }), 400);
     }, 50);
   } else if (cat === 'all') {
