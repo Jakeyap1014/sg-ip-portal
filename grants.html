@@ -651,16 +651,27 @@ function filterGrants(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const cards = document.querySelectorAll('[data-cat]');
+  let firstMatch = null;
   cards.forEach(card => {
     if (cat === 'all' || card.dataset.cat === cat) {
       card.style.display = '';
       card.style.opacity = '1';
       card.style.pointerEvents = '';
+      if (!firstMatch) firstMatch = card;
     } else {
       card.style.opacity = '0.15';
       card.style.pointerEvents = 'none';
     }
   });
+  if (firstMatch && cat !== 'all') {
+    setTimeout(() => {
+      firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // offset for sticky nav + filter bar
+      setTimeout(() => window.scrollBy({ top: -130, behavior: 'smooth' }), 400);
+    }, 50);
+  } else if (cat === 'all') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 </script>
 </body>
