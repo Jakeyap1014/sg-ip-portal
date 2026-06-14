@@ -21,3 +21,9 @@ Enhance and preserve the internal Singapore IP holding-company portal for The Li
 1. Verify whether this project has an active external GitHub/Render deployment that should be tracked in an `external-repos.md` file.
 2. If the portal is still active, run a visual QA pass on `index.html`, `grants.html`, and `org-chart.html`.
 3. If complete/inactive, archive the project through the normal close-project process.
+
+## 2026-06-14 — HK dropshipping comparison note
+- Yun Kai asked whether Kevin Krieg's Hong Kong setup tweet was better than the current SG setup.
+- Durable comparison: the tweet was about a Hong Kong trading/company setup for EU dropshipping margin, while the saved SG workstream is an SG IP HoldCo / group-structure setup. They solve different problems.
+- Current guidance preserved: do not treat HK as a replacement for SG IP HoldCo. HK may be worth considering only as a separate China-facing trading/procurement layer for specific China → EU/UK direct-ship flows, and only after tax/VAT advice.
+- Caveat: EU VAT/import duties do not disappear just because the seller entity is Hong Kong; if the seller does not handle IOSS/DDP or equivalent import/VAT treatment, customers/carriers may be hit on delivery, creating CX and compliance risk.
